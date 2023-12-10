@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="handleSubmit(form); toggleProduct();" #productForm="ngForm" class="product-form">
+    <div class="form-group">
+        <label for="product-name">Name:</label>
+        <input type="text" id="product-name" name="product-name" [(ngModel)]="newProduct.name" placeholder="Product Name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="product-description">Description:</label>
+        <textarea id="product-description" name="product-description" [(ngModel)]="newProduct.description" placeholder="Product Description" required></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="product-price">Price:</label>
+        <input type="number" id="product-price" name="product-price" [(ngModel)]="newProduct.price" required>
+    </div>
+
+    <app-tag-form #tagForm (tagAdded)="handleTagAdded($event)" [showSubmitButton]="false"></app-tag-form>
+
+    <div class="form-group">
+        <label for="product-url">Image URL:</label>
+        <input type="url" id="product-url" name="product-url" [(ngModel)]="newProduct.imageUrl" placeholder="Product Image By URL">
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid || tagForm.tagForm?.invalid">Save</button>
+</form>

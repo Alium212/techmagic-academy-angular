@@ -1,0 +1,39 @@
+<button class="create-button" (click)="toggleProductForm()">{{ toggleButtonText }}</button>
+<app-product-form *ngIf="showProductForm" [productToEdit]="selectedProduct" (toggleForm)="toggleProductForm()"></app-product-form>
+
+<section class="product-list">
+    <h2>Product List</h2>
+    <div class="tags">
+        <app-tag-list></app-tag-list>
+        <app-tag-form></app-tag-form>
+    </div>
+
+    <section class="product-list__cards-container">
+        <article 
+            class="product-card" 
+            *ngFor="let product of products$ | async" 
+            appHighlight color="#e5e5e5"
+            [class.hidden]="!matchesTag(product)"
+            (click)="navigateToProduct(product.id)"
+            >
+            <img class="product-image" [src]="product.imageUrl" alt="{{ product.name }}">
+            <footer class="product-details">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price">Price: {{ product.price }}$</p>
+                <p class="product-id">ID: {{ product.id }}</p>
+                <div class="product-tags">
+                    <span class="tag" *ngFor="let tag of product.tags" [style.backgroundColor]="tag.color">
+                        {{ tag.name }}
+                    </span>
+                </div>
+                <div class="product-actions">
+                    <button class="edit-button" (click)="editMode ? cancelEdit($event) : editProduct(product.id, $event)">
+                        {{ editMode && selectedProductId === product.id ? 'Cancel' : 'Edit' }}
+                    </button>
+                    <button class="delete-button" (click)="deleteProduct(product.id, $event)">Delete</button>
+                </div>
+            </footer>
+        </article>
+    </section>
+</section>

@@ -1,0 +1,11 @@
+<section class="tag-list">
+    <h2>Filter products by tag</h2>
+    
+    <div class="tags">
+        <button (click)="filterProductsByTag('all')" class="tags__item">All</button>
+        <button *ngFor="let tag of tags$ | async" (click)="filterProductsByTag(tag.name)" [style.backgroundColor]="tag.color" class="tags__item">
+            {{ tag.name }}
+            <button (click)="deleteTag(tag.name)">Delete</button>
+        </button>
+    </div>
+</section>

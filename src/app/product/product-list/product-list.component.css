@@ -1,0 +1,94 @@
+.hidden {
+    display: none;
+}
+
+.create-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-button:hover {
+    background-color: #45a049;
+}
+
+.product-list {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.product-list__cards-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.product-image {
+    width: 212px;
+    aspect-ratio: auto 212 / 212;
+    height: 184px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-name {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.product-description {
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-weight: bold;
+}
+
+.product-tags {
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: white;
+    margin-right: 5px;
+}
+
+.product-actions {
+    margin-top: 10px;
+}
+
+.edit-button,
+.delete-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,30 @@
+<button (click)="goBack()" class="back-button">Back</button>
+
+<div class="product-detail">
+    <div class="product-image">
+        <img [src]="selectedProduct?.imageUrl" alt="{{ selectedProduct?.name }}">
+    </div>
+    <div class="product-info">
+        <h2 [attr.contenteditable]="isEditMode ? 'true' : 'false'" (keyup)="onFieldChange($event, 'name')">{{ selectedProduct?.name }}</h2>
+        <p class="description" [attr.contenteditable]="isEditMode ? 'true' : 'false'" (keyup)="onFieldChange($event, 'description')">
+            {{ selectedProduct?.description }}
+        </p>
+        <p>Price: $
+            <span [attr.contenteditable]="isEditMode ? 'true' : 'false'" 
+            (input)="onFieldChange($event, 'price')"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 46"
+            >
+            {{ selectedProduct?.price }}
+        </span></p>
+        <div class="tags">
+            <span class="tag" *ngFor="let tag of selectedProduct?.tags" [style.backgroundColor]="tag.color">
+            {{ tag.name }}
+            </span>
+        </div>
+        <div class="action-buttons">
+            <button (click)="toggleEditMode()" *ngIf="!isEditMode" class="edit-button">Edit</button>
+            <button (click)="updateProduct()" *ngIf="isEditMode" class="edit-button">Save</button>
+            <button (click)="deleteProduct()" class="delete-button">Delete</button>
+        </div>
+    </div>
+</div>

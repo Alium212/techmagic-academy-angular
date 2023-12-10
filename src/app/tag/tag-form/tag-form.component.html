@@ -1,0 +1,15 @@
+<div>
+    <h2>Create Tag</h2>
+    <form *ngIf="showSubmitButton" (ngSubmit)="addTag()" #tagForm="ngForm" class="tag-form">
+        <input name="tag-name" type="text" placeholder="Tag Name" [(ngModel)]="newTagNames" required>
+        <div class="form-group">
+            <label for="tag-color">Choose tag color:</label>
+            <input name="tag-color" type="color" placeholder="Tag Color" [(ngModel)]="newTagColor">
+        </div>
+        <button type="submit" [disabled]="tagForm.invalid">Add Tag</button>
+    </form>
+    <form *ngIf="!showSubmitButton" #tagForm="ngForm" class="tag-form">
+        <input name="tag-name" type="text" placeholder="Tag Name" [(ngModel)]="newTagNames" required>
+        <input name="tag-color" type="color" placeholder="Tag Color" [(ngModel)]="newTagColor">
+    </form>
+</div>
